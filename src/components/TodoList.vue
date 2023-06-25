@@ -25,6 +25,10 @@ export default {
   },
   setup() {
     const { locale } = useI18n();
+    const { t } = useI18n({
+      inheritLocale: true,
+      useScope: "local"
+    });
     const newTodoTitle = ref("");
     const newDate = ref("");
     const newTodoContent = ref("");
@@ -108,7 +112,7 @@ export default {
     }
 
     const notify = title => {
-      toast(`{{ $t('message.hello', { msg: ${title} }) }}`, {
+      toast(`{{ t('message.hello', { msg: ${title} }) }}`, {
         autoClose: 1000
       });
     };
@@ -131,7 +135,8 @@ export default {
       doneTodo,
       removeTodo,
       saveData,
-      notify
+      notify,
+      t
     };
   }
 };
@@ -142,7 +147,7 @@ export default {
     <form @submit.prevent>
       <div class="d-flex justify-content-between">
         <div>
-          <label>{{ $t('form.title') }}</label>
+          <label>{{ t('form.title') }}</label>
           <input v-model="newTodoTitle" class="newTodoTitle mx-2" autocomplete="off" />
         </div>
         <div>
@@ -150,8 +155,8 @@ export default {
             v-if="indexEdit === -1"
             @click="addTodo()"
             class="btn btn-success"
-          >{{ $t('form.add') }}</button>
-          <button v-else @click.self="saveTodo()" class="btn btn-success">{{ $t('form.save') }}</button>
+          >{{ t('form.add') }}</button>
+          <button v-else @click.self="saveTodo()" class="btn btn-success">{{ t('form.save') }}</button>
         </div>
       </div>
       <div class="my-2">
@@ -171,15 +176,15 @@ export default {
         />
       </div>
 
-      <VueDatePicker v-model="newDate" :placeholder="$t('select-due-date')"></VueDatePicker>
+      <VueDatePicker v-model="newDate" :placeholder="t('select-due-date')"></VueDatePicker>
     </form>
-    <h2 class="mt-5 mb-3 text-center">{{ $t('list') }}</h2>
+    <h2 class="mt-5 mb-3 text-center">{{ t('list') }}</h2>
     <table class="table table-hover">
       <thead class="thead-light">
         <tr>
-          <th scope="col">{{ $t('table.todo') }}</th>
-          <th scope="col">{{ $t('table.due-date') }}</th>
-          <th scope="col">{{ $t('table.status') }}</th>
+          <th scope="col">{{ t('table.todo') }}</th>
+          <th scope="col">{{ t('table.due-date') }}</th>
+          <th scope="col">{{ t('table.status') }}</th>
           <th scope="col" max-witdh="300"></th>
         </tr>
       </thead>
@@ -188,11 +193,11 @@ export default {
           <td>{{ todo.title }}</td>
           <td>{{ new Date(todo.date).toLocaleString() }}</td>
           <td>
-            <p v-if="todo.done">{{ $t('table.done') }}</p>
+            <p v-if="todo.done">{{ t('table.done') }}</p>
             <p
               v-else-if="!todo.done && (new Date(todo.date) <= new Date())"
-            >{{ $t('table.out-date') }}</p>
-            <p v-else>{{ $t('table.doing') }}</p>
+            >{{ t('table.out-date') }}</p>
+            <p v-else>{{ t('table.doing') }}</p>
           </td>
           <td class="group-btn">
             <button
@@ -221,7 +226,7 @@ export default {
         </tr>
       </tbody>
     </table>
-    <h4 v-if="todos.length === 0" class="text-center">{{ $t('table.empty') }}</h4>
+    <h4 v-if="todos.length === 0" class="text-center">{{ t('table.empty') }}</h4>
   </div>
 </template>
 
