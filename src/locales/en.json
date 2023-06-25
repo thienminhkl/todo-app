@@ -1,0 +1,21 @@
+{
+  "app": "Todo App",
+  "form":{
+    "title": "Add title",
+    "add": "Add Todo",
+    "save": "Save"
+  },
+  "list": "Todo list",
+  "select-due-date": "Select due date",
+  "table":{
+    "todo": "Todo",
+    "due-date": "Due date",
+    "status": "Status",
+    "done": "Done",
+    "out-date": "Out date",
+    "doing": "Doing",
+    "empty": "Empty list"
+  },
+  "en": "English",
+  "vn": "Vietnamese"
+}

@@ -1,0 +1,21 @@
+{
+    "app": "Việc cần làm",
+    "form":{
+      "title": "Điền tiêu đề",
+      "add": "Thêm việc cần làm",
+      "save": "Lưu"
+    },
+    "list": "Danh sách cần làm",
+    "select-due-date": "Chọn thời hạn hoàn thành",
+    "table":{
+      "todo": "Tiêu đề",
+      "due-date": "Thời hạn",
+      "status": "Trạng thái",
+      "done": "Hoàn thành",
+      "out-date": "Quá hạn",
+      "doing": "Đang làm",
+      "empty": "Danh sách rỗng"
+    },
+    "en": "Tiếng Anh",
+    "vn": "Tiếng Việt"
+  }
